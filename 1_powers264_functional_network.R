@@ -155,9 +155,12 @@ for(c1 in 1:length(IP_subject_folder)) #for.c1.begins
         else
           {signal_data[[c2]] <- signal/voxel_count}
       
-       #***HERE PRINT signal_data for each c2****.
         
        }#for.c2.ends
+
+    # write out the mean signal for all 264 power ROIs
+    outputfilename <- paste(IP_f_path, IP_subject_folder[c1], "/", IP_subject_folder, '_extracted_mean_signal.txt',  sep="")
+    lapply(signal_data, write, file=outputfilename, append=TRUE, ncolumns=145)
 
     #-----------------------------------------------------------------------------------------------------------
 
